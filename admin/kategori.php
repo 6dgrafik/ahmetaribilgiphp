@@ -94,7 +94,7 @@
                                     <td><?php echo $satir_katlist['katturu'];?></td>
                                     <td><?php echo $satir_katlist['ustkat'];?></td>
                                     <td><button class="btn btn-warning">Düzenle</button></td>
-                                    <td><a href="kategorisil.php?id= <?php echo$satir_katlist['id'];?>">
+                                    <td><a href="kategorisil.php?id=<?php echo $satir_katlist['id'];?>">
                                     <button class="btn btn-danger">Sil</button></a></td>
                                 </tr>
 

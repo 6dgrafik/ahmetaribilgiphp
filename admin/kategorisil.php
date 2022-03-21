@@ -9,4 +9,11 @@ $id = $_GET['id'];
 $sorgu_katsil = $db -> prepare('delete from kategoriler where id=?');
 $sorgu_katsil -> execute (array($id));
 
+if($sorgu_katsil -> rowCount()){
+    echo 'Kategori Silindi <meta http-equiv="refresh" content="0; url=kategori.php">';
+}else {
+    echo 'Hata Oluştu';
+}
+
 ?>
+

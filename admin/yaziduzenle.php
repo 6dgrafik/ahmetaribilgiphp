@@ -34,7 +34,7 @@ $satir_duzenle = $sorgu_duzenle -> fetch();
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                    <img src=<?php echo $satir_duzenle['foto'];?>>
+                    <img src=<?php echo $satir_duzenle['foto'];?> class="img-fluid">
                     <input type="file" name="foto" class="mt-2">
                 </div>
                 <div class="form-group">
@@ -77,32 +77,36 @@ $satir_duzenle = $sorgu_duzenle -> fetch();
                 <div class="form-group">
                     <button type="submit" class="btn btn-success w-100">Kaydet</button>
                 </div>
-                <?php 
                 
-                if($_POST){
-                    $baslik = $_POST['baslik'];
-                    $icerik = $_POST['icerik'];
-                    $meta = $_POST ['meta'];
-                    $dizin = '../img/';
-                    $yuklenecekfoto = $dizin.$_FILES['foto']['name'];
-                    $fotoalt = $_POST['fotoalt'];
-                    $kategori = $_POST['kategori'];
-                    $tarih = $_POST['tarih'];
-                    $durum = $_POST['durum'];
+<?php
 
-                    if(move_uploaded_file($_FILES['foto']['tmp_name'],$yuklenecekfoto)){
-                        $sorgu_kaydet = $db -> prepare('insert into yazilar (baslik,icerik,meta,foto,fotoalt,kategori,tarih,durum)values(?,?,?,?,?,?,?,?)');
-                        $sorgu_kaydet -> execute(array($baslik,$icerik,$meta,$yuklenecekfoto,$fotoalt,$kategori,$tarih,$durum));
+if($_POST){
+    $baslik = $_POST['baslik'];
+    $icerik = $_POST['icerik'];
+    $meta = $_POST['meta'];
+    $dizin = "../img/";
+    $yuklenecekfoto = $dizin.$_FILES['foto']['name'];
+    $fotoalt = $_POST['fotoalt'];
+    $kategori = $_POST['kategori'];
+    $tarih = $_POST['tarih'];
+    $durum = $_POST['durum'];
 
-                        if($sorgu_kaydet -> rowCount()){
-                            echo '<div class="alert alert-success">Kayıt İşlemi Başarılı</div> <meta http-equiv="refresh" content="1; url=yazilar.php">';
-                        }else{
-                            echo '<div class="alert alert-danger">Hata Oluştu</div>';   
-                        }
-                    }
-                }
+    if(move_uploaded_file($_FILES['foto']['tmp_name'],$yuklenecekfoto)){
+        $sorgu_guncelle = $db -> prepare('update yazilar set baslik=?,icerik=?,meta=?,foto=?,fotoalt=?,kategori=?,tarih=?,durum=?where id=?' );
+        $sorgu_guncelle -> execute(array($baslik,$icerik,$meta,$yuklenecekfoto,$fotoalt,$kategori,$tarih,$durum,$id));
 
-                ?>
+        if($sorgu_guncelle -> rowCount()){
+            echo '<div class="alert alert-success">Kayıt Güncellendi</div><meta http-equiv="refresh" content="1; url=yazilar.php">';
+        }else{
+          echo  '<div class"alert alert-success">Kayıt Güncellendi</div>';
+        }
+    }
+}
+
+
+?>
+
+
             </div>
         </form>
 

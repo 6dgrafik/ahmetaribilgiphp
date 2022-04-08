@@ -13,4 +13,4 @@ if($sorgu_yazisil -> rowCount()){
     <meta http-equiv="refresh" content="1; url=yazilar.php">';
 }
 
- require_once('footer.php');
+ require_once('footer.php'); ?>

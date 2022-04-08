@@ -81,6 +81,27 @@ $satir_iletisim = $sorgu_iletisim -> fetch();
                         <button type="submit" class="btn btn-mor w-100">Gönder</button>
                     </div>
                 </form>
+                <?php
+                
+                if($_POST){
+                    $ad = $_POST['ad'];
+                    $email = $_POST['email'];
+                    $konu = $_POST['konu'];
+                    $mesaj = $_POST['mesaj'];
+                    $durum = 'Okunmadı';
+
+                    $sorgu_mesaj = $db -> prepare('insert into mesajlar(ad,email,konu,mesaj,durum) values (?,?,?,?,?)');
+                    $sorgu_mesaj -> execute(array($ad,$email,$konu,$mesaj,$durum));
+
+                    if($sorgu_iletisim -> rowCount()){
+                        echo '<meta http-equiv="refresh" content="0; url=tesekkurler.html">';
+                    }else{
+                        echo '<div class="alert alert-danger">Hata Oluştu Lütfen Tekrar Deneyin</div>';
+                    }
+                    
+                }
+                
+                ?>
             </div>
             <div class="col-md-6 text-center">
                 <?php echo $satir_iletisim['harita']; ?>

@@ -23,12 +23,14 @@
     color: #fff;
 }
 
-#iletisimBanner {
+#iletisimBanner,
+#blogBanner {
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#iletisimBanner a {
+#iletisimBanner a,
+#blogBanner a {
     color: #fff;
 }
 

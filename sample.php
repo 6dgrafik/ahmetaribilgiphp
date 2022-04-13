@@ -5,13 +5,12 @@ $id = $_GET['id'];
 $sorgu_makale = $db->prepare('select * from yazilar where id=?');
 $sorgu_makale->execute(array($id));
 $satir_makale = $sorgu_makale->fetch();
-
+$baslik = $satir_makale['baslik'];
 ?>
 
 
 
-<!-- Bread Crumb section start -->
-
+<!-- Bread Crumb Section Start -->
 <section id="bread" class="py-3">
     <div class="container">
         <div class="row">
@@ -21,18 +20,16 @@ $satir_makale = $sorgu_makale->fetch();
         </div>
     </div>
 </section>
+<!-- Bread Crumb Section End -->
 
-<!-- Bread Crumb section ebd -->
-
-<!-- içerik section start -->
-
+<!-- İçerik Section Start -->
 <section id="content">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <img src="<?php echo substr($satir_makale['foto'], 3); ?>" alt="<?php echo $satir_makale['fotoalt']; ?>" class="w-100 mb-3">
                 <h1><?php echo $satir_makale['baslik']; ?></h1>
-                <small>Yayınlanma Tarihi: <?php echo $satir_makale['tarih']; ?> - Kategori: <a href=""><?php echo $satir_makale['kategori']; ?></a></small><br>
+                <small>Yayınlanma Tarihi: <?php echo $satir_makale['tarih']; ?> - Kategori: <a href=""><?php echo $satir_makale['kategori']; ?></a> </small> <br>
 
                 <?php echo $satir_makale['icerik']; ?>
 
@@ -55,24 +52,42 @@ $satir_makale = $sorgu_makale->fetch();
                     </div>
                     <div class="col-12">
                         <div class="form-group">
-                            <textarea name="yorumn" placeholder="Yorumunuz" rows="5" class="form-control"></textarea>
+                            <textarea name="yorum" placeholder="Yorumuz" rows="5" class="form-control"></textarea>
                         </div>
-                        <div class="col-12">
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-mor w-25">Gönder</button>
-                            </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-mor w-25">Gönder</button>
                         </div>
                     </div>
                 </form>
-            </div>
+                <?php 
+                
+              if($_POST){
 
+$adiniz = $_POST['adiniz'];
+$soyadiniz = $_POST['soyadiniz'];
+$email = $_POST['email'];
+$yorum = $_POST['yorum'];
+$durum = "onaylanmadı";
+
+$sorgu_yorumkaydet = $db -> prepare('insert into yorumlar(adiniz,soyadiniz,email,yorum,baslik,durum) values (?,?,?,?,?,?)');
+$sorgu_yorumkaydet -> execute(array($adiniz,$soyadiniz,$email,$yorum,$baslik,$durum));
+
+if($sorgu_yorumkaydet -> rowCount()){
+    echo '<div class="alert alert-success">Yorumunuz Admin Onayına Gönderildi</div>';
+}else{
+    echo '<div class="alert alert-danger">Hata Oluştu Lütfen Tekrar Deneyin</div>';
+}
+
+              }
+                
+                ?>
+            </div>
             <?php require_once('sidebar.php'); ?>
-            
-            
         </div>
     </div>
 </section>
-
-<!-- içerik section end -->
+<!-- İçerik Section End -->
 
 <?php require_once('footer.php'); ?>

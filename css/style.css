@@ -55,3 +55,12 @@
 #menu li {
     font-family: 'Grape Nuts', cursive;
 }
+
+.smallYazi p {
+    line-height: 16px !important;
+}
+
+.sosmed a {
+    color: #393939 !important;
+    font-size: 24px;
+}

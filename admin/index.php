@@ -1,8 +1,4 @@
-<?php
-
-session_start();
-
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +22,7 @@ session_start();
         <div class="container">
             <div class="row" style="height: 70vh;">
                 <div class="col-4 mx-auto my-auto text-center">
-                    <img src="https://www.aribilgi.com/wp-content/uploads/2022/01/cropped-logo-200x37-1.png" srcset="">
+                    <img src="https://www.aribilgi.com/wp-content/uploads/2022/01/cropped-logo-200x37-1.png">
                     <form method="post" class="mt-3">
                         <div class="form-group">
                             <input type="text" name="kadi" class="form-control" placeholder="Kullanıcı Adınızı Girin">
@@ -38,22 +34,22 @@ session_start();
                             <button type="submit" class="btn btn-success w-100">Giriş</button>
                         </div>
                     </form>
-                    <?php
 
+                    <?php
                     if ($_POST) {
                         $kadi = $_POST['kadi'];
                         $sifre = $_POST['sifre'];
 
-                        if ($kadi == 'ahmet' && $sifre == '123') {
+                        if ($kadi == "Admin" && $sifre == "123") {
                             $_SESSION['kadi'] = $kadi;
                             echo '<div class="alert alert-success">Kullanıcı Adı ve Şifre Doğru</div>';
-                            echo '<meta http-equiv="refresh" content="1; url=dashboard.php">';
+                            echo '<meta http-equiv="refresh" content="2; url=dashboard.php">';
                         } else {
-                            echo '<div class="alert alert-danger">Kullanıcı Adı ve/veya Şifre Hatalı</div>';
+                            echo '<div class="alert alert-danger">Kullanıcı Adı ve/veya Şifreniz Hatalı</div>';
                         }
                     }
-
                     ?>
+
                 </div>
             </div>
         </div>

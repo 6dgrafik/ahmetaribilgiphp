@@ -57,7 +57,10 @@
         } else{
             echo 'Böyle Bir Foto Yok';
         }
+
+
     }
+
     ?>
 
 </body>

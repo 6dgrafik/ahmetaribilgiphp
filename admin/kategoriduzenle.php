@@ -51,8 +51,8 @@ $satir_duzenle = $sorgu_duzenle->fetch();
                         <button type="submit" class="btn btn-success w-100">Kaydet</button>
                     </div>
                 </form>
-                <?php
 
+                <?php
                 if ($_POST) {
                     $kategori = $_POST['kategori'];
                     $katturu = $_POST['katturu'];
@@ -63,17 +63,13 @@ $satir_duzenle = $sorgu_duzenle->fetch();
                     $sorgu_guncel->execute(array($kategori, $katturu, $ustkat, $meta, $id));
 
                     if ($sorgu_guncel->rowCount()) {
-                    
-                    echo '<div class= "alert alert-success">Kayıt Güncellendi
-                    </div>';
-
-                    }else{
-                        echo '<div class= "alert alert-danger">Hata Oluştu
-                    </div>'; 
+                        echo '<div class="alert alert-success">Kayıt Güncellendi</div>';
+                    } else {
+                        echo '<div class="alert alert-danger">Hata Oluştu</div>';
                     }
                 }
-
                 ?>
+
             </div>
             <div class="col-md-9">
                 <h3>Kategori Listesi</h3>

@@ -46,12 +46,12 @@
                     <label><small>Sayfa Türü</small></label>
                     <select name="sayfaturu" class="form-control">
                         <option value="">Seçiniz</option>
-                        <option value="Alt Sayfa">Alt Syfa</option>
+                        <option value="Alt Sayfa">Alt Sayfa</option>
                         <option value="Üst Sayfa">Üst Sayfa</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label><small>Yayınlanma Tariji</small></label>
+                    <label><small>Yayınlanma Tarihi</small></label>
                     <input type="date" name="tarih" class="form-control">
                 </div>
                 <div class="form-group">
@@ -59,7 +59,6 @@
                 </div>
 
                 <?php
-
                 if ($_POST) {
 
                     $baslik = $_POST['baslik'];
@@ -73,19 +72,17 @@
                     $sayfaturu = $_POST['sayfaturu'];
                     $tarih = $_POST['tarih'];
 
-
                     if (move_uploaded_file($_FILES['foto']['tmp_name'], $yuklenecekfoto)) {
                         $sorgu_sayfa = $db->prepare('insert into sayfalar(baslik,icerik,meta,foto,fotoalt,seotitle,durum,sayfaturu,tarih) values(?,?,?,?,?,?,?,?,?)');
                         $sorgu_sayfa->execute(array($baslik, $icerik, $meta, $yuklenecekfoto, $fotoalt, $seotitle, $durum, $sayfaturu, $tarih));
 
                         if ($sorgu_sayfa->rowCount()) {
-                            echo '<div class="alert alert-success">Sayfa Eklendi</div><meta http-equiv="refresh" content="1; url=sayfalar.php">';
+                            echo '<div class="alert alert-success">Sayfa Eklendi</div><meta http-equiv="refresh" content="2; url=sayfalar.php">';
                         } else {
                             echo '<div class="alert alert-danger">Hata Oluştu</div>';
                         }
                     }
                 }
-
                 ?>
 
             </div>

@@ -1,8 +1,8 @@
 <?php
-
 session_start();
+
 if(!isset($_SESSION['kadi'])){
-    die('Giriş Yetkiniz Yoktur');
+    die('Giriş Yetkiniz Yoktur.');
 }
 
 require_once('baglan.php');
@@ -23,6 +23,7 @@ require_once('baglan.php');
     <link rel="stylesheet" href="../css/style.css">
 
     <title>Başlık</title>
+
     <script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
 
 </head>
@@ -45,7 +46,6 @@ require_once('baglan.php');
                         <li><a href="ebulten.php">E-Bülten Üyeleri</a></li>
                         <li><a href="ayarlar.php">Ayarlar</a></li>
                         <li><a href="logout.php">Çıkış</a></li>
-                        
                     </ul>
                 </div>
                 <div class="col-md-10">

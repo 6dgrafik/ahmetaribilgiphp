@@ -42,8 +42,7 @@ $satir_banner = $sorgu_banner->fetch();
 </section>
 <!-- Search Section End -->
 
-<!-- Blog list section start -->
-
+<!-- Blog list Section Start -->
 <section id="blogList" class="py-5">
     <div class="container">
         <div class="row">
@@ -53,36 +52,28 @@ $satir_banner = $sorgu_banner->fetch();
 
             if ($sorgu_bloglist->rowCount()) {
                 foreach ($sorgu_bloglist as $satir_bloglist) {
-
             ?>
                     <div class="col-md-4 mt-4">
                         <div class="card shadow">
-
-                            <a href="sample.php?id=<?php echo $satir_bloglist['id']; ?>">
+                            <a href="sample.php?id=<?php echo $satir_bloglist['id']; ?> ">
                                 <img src="<?php echo substr($satir_bloglist['foto'], 3); ?>" alt="<?php echo $satir_bloglist['fotoalt']; ?>" class="card-img-top">
                             </a>
-
-
                             <div class="card-body">
                                 <a href="sample.php?id=<?php echo $satir_bloglist['id']; ?>" class="text-dark text-decoration-none">
-                                <h2 style="font-size:16px; font-weight:600;"><?php echo $satir_bloglist['baslik']; ?></h2>
+                                    <h2 style="font-size:1.2rem;"><?php echo $satir_bloglist['baslik']; ?></h2>
                                 </a>
-                                <small>Yayınlanma Tarihi: <?php echo $satir_bloglist['tarih']; ?></small>
+                                <small>Yayınlanma Tarihi: <?php echo $satir_bloglist['tarih']; ?> </small>
                             </div>
                         </div>
                     </div>
-
             <?php
                 }
             }
-
             ?>
-
         </div>
     </div>
 </section>
-
-<!-- Blog list section end -->
+<!-- Blog list Section End -->
 
 
 <?php require_once('footer.php'); ?>

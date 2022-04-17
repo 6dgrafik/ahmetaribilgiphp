@@ -96,15 +96,14 @@
             </div>
             <div class="col-md-4">
                 <div class="form-group">
-                <label for="piksel"><small>Facebook Pixeli Kodu</small></label>
-                <textarea name="piksel" id="piksel" rows="5" class="form-control"></textarea>
+                    <label for="piksel"><small>Facebook Pixeli Kodu</small></label>
+                    <textarea name="piksel" id="piksel" rows="5" class="form-control"></textarea>
                 </div>
             </div>
             <div class="col-9">
-              <div class="form-group">
-                 
-                  <input type="text" name="copy" id="copy" class="form-control" placeholder="Her Hakkı Saklıdır">
-              </div>
+                <div class="form-group">
+                    <input type="text" name="copy" id="copy" class="form-control" placeholder="Her Hakkı Saklıdır">
+                </div>
             </div>
             <div class="col-3 my-auto">
                 <div class="form-group">
@@ -113,17 +112,16 @@
             </div>
             <div class="col-12">
                 <?php
-                
-                if(isset($_POST['kaydet'])){
+                if (isset($_POST['kaydet'])) {
                     $adres = $_POST['adres'];
                     $telefon = $_POST['telefon'];
                     $email = $_POST['email'];
                     $harita = $_POST['harita'];
                     $tanitim = $_POST['tanitim'];
                     $dizin = "../img/";
-                    $logo = $dizin.$_FILES['logo']['name'];
-                    $blogbanner = $dizin.$_FILES['blogbanner']['name'];
-                    $iletisimbanner = $dizin.$_FILES['iletisimbanner']['name'];
+                    $logo = $dizin . $_FILES['logo']['name'];
+                    $blogbanner = $dizin . $_FILES['blogbanner']['name'];
+                    $iletisimbanner = $dizin . $_FILES['iletisimbanner']['name'];
                     $facebook = $_POST['facebook'];
                     $instagram = $_POST['instagram'];
                     $twitter = $_POST['twitter'];
@@ -133,31 +131,26 @@
                     $piksel = $_POST['piksel'];
                     $copy = $_POST['copy'];
 
-                    $foto1 = move_uploaded_file($_FILES['logo']['tmp_name'],$logo);
-                    $foto2 = move_uploaded_file($_FILES['blogbanner']['tmp_name'],$blogbanner);
-                    $foto3 = move_uploaded_file($_FILES['iletisimbanner']['tmp_name'],$iletisimbanner);
+                    $foto1 = move_uploaded_file($_FILES['logo']['tmp_name'], $logo);
+                    $foto2 = move_uploaded_file($_FILES['blogbanner']['tmp_name'], $blogbanner);
+                    $foto3 = move_uploaded_file($_FILES['iletisimbanner']['tmp_name'], $iletisimbanner);
 
                     if(isset($foto1) && isset($foto2) && isset($foto3)){
-                        $sorgu = $db -> prepare('insert into ayarlar (adres,telefon,email,harita,tanitim,logo,blogbanner,
-                        iletisimbanner,facebook,instagram,twitter,whatsapp,analitik,konsol,piksel,copy) values (?,?,?,?,?,?,?,?,
-                        ?,?,?,?,?,?,?,?)');
-                        $sorgu -> execute(array($adres,$telefon,$email,$harita,$tanitim,$logo,$blogbanner,$iletisimbanner,
-                        $facebook,$instagram,$twitter,$whatsapp,$analitik,$konsol,$piksel,$copy));
+                        $sorgu = $db -> prepare('insert into ayarlar(adres,telefon,email,harita,tanitim,logo,blogbanner,iletisimbanner,facebook,instagram,twitter,whatsapp,analitik,konsol,piksel,copy) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)');
+                        $sorgu -> execute(array($adres,$telefon,$email,$harita,$tanitim,$logo,$blogbanner,$iletisimbanner,$facebook,$instagram,$twitter,$whatsapp,$analitik,$konsol,$piksel,$copy));
+
                         if($sorgu -> rowCount()){
-                            echo '<div class= "alert alert-success">Ayarlar Kaydedildi</div>';
-                        }else{
-                            echo '<div class= "alert alert-danger">Hata Oluştu</div>';
+                            echo '<div class="alert alert-success">Ayarlar Kaydedildi</div>';
+                        } else {
+                            echo '<div class="alert alert-danger">Hata Oluştu</div>';
                         }
                     }
                 }
-
                 ?>
             </div>
         </form>
-
     </div>
 </section>
-
 <!-- Ayarlar Section End -->
 
 <?php require_once('footer.php'); ?>

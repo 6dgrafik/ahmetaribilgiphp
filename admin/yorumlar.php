@@ -38,7 +38,7 @@
                                     <td><?php echo $satir_yorumlar['yorum']; ?></td>
                                     <td><?php echo $satir_yorumlar['baslik']; ?></td>
                                     <td><?php echo $satir_yorumlar['durum']; ?></td>
-                                    <td><a href="yorumonayla.php"><button class="btn btn-info">Onayla</button></a></td>
+                                    <td><a href="yorumonayla.php?id=<?php echo $satir_yorumlar['id']; ?>"><button class="btn btn-info">Onayla</button></a></td>
                                     <td><a href="yorumsil.php?id=<?php echo $satir_yorumlar['id']; ?>"><button class="btn btn-danger">Sil</button></a></td>
                                 </tr>
                         <?php

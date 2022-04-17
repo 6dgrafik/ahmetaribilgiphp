@@ -33,6 +33,21 @@ $baslik = $satir_makale['baslik'];
 
                 <?php echo $satir_makale['icerik']; ?>
 
+                <hr>
+
+<h5>Yorumlar</h5>
+
+<?php 
+
+$sorgu_yorumlar = $db -> prepare('select * from yorumlar order by id desc');
+$sorgu_yorumlar -> execute();
+
+
+
+?>
+
+                <hr>
+
                 <h5 class="mt-5">Yorum Yapın</h5>
                 <form method="post" class="form-row">
                     <div class="col-md-6">

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['kadi'])){
+if (!isset($_SESSION['kadi'])) {
     die('Giriş Yetkiniz Yoktur.');
 }
 
@@ -38,6 +38,26 @@ require_once('baglan.php');
                     <h2>Arı Bilgi</h2>
                     <ul class="p-0">
                         <li><a href="dashboard.php">Başlangıç</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Ana Sayfa
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-dark" href="#">Action</a>
+                                <a class="dropdown-item text-dark" href="#">Another action</a>
+                                <a class="dropdown-item text-dark" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Hakkımda
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-dark" href="hakkimdabanner.php">Banner Ayarları</a>
+                                <a class="dropdown-item text-dark" href="hakkimdaicerik.php">İçerik Ayarları</a>
+                                <a class="dropdown-item text-dark" href="hakkimdanitelik.php">Nitelik Ayarları</a>
+                            </div>
+                        </li>
                         <li><a href="sayfalar.php">Sayfalar</a></li>
                         <li><a href="yazilar.php">Yazılar</a></li>
                         <li><a href="yorumlar.php">Yorumlar</a></li>

@@ -44,9 +44,24 @@ require_once('baglan.php');
                                         Hizmetlerim
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Web Tasarım Hizmeti</a>
-                                        <a class="dropdown-item" href="#">Grafik Tasarım Hizmeti</a>
-                                        <a class="dropdown-item" href="#">Dijital Pazarlama Hizmeti</a>
+
+                                        <?php
+
+                                        $sorgu_altmenu = $db->prepare('select * from sayfalar where sayfaturu = "Alt Sayfa" order by baslik asc ');
+                                        $sorgu_altmenu->execute();
+
+                                        if ($sorgu_altmenu->rowCount()) {
+                                            foreach ($sorgu_altmenu as $satir_altmenu) {
+                                        ?>
+                                                <a class="dropdown-item" href="samplepage.php?id=<?php echo $satir_altmenu['id']; ?>"><?php echo $satir_altmenu['baslik']; ?></a>
+                                        <?php
+                                            }
+                                        }
+
+                                        ?>
+
+
+
                                     </div>
                                 </li>
                                 <li class="nav-item">

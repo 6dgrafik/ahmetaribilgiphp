@@ -55,7 +55,6 @@ require_once('baglan.php');
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item text-dark" href="hakkimdabanner.php">Banner Ayarları</a>
                                 <a class="dropdown-item text-dark" href="hakkimdaicerik.php">İçerik Ayarları</a>
-                                <a class="dropdown-item text-dark" href="hakkimdanitelik.php">Nitelik Ayarları</a>
                             </div>
                         </li>
                         <li><a href="sayfalar.php">Sayfalar</a></li>

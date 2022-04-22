@@ -1,19 +1,16 @@
 <?php
+require_once('header.php'); 
 
-require_once('header.php');
-
-$id=$_GET['id'];
+$id = $_GET['id'];
 $sorgu_hizmet = $db -> prepare('select * from sayfalar where id=?');
 $sorgu_hizmet -> execute(array($id));
 $satir_hizmet = $sorgu_hizmet -> fetch();
-
 ?>
 
 
 
-<!-- Hizmetler banner section start -->
-
-<section id="hizmetBanner" class="py-15" style="background-image:  url('<?php echo substr($satir_hizmet['foto'],3); ?>');">
+<!-- Hizmetler banner Section start-->
+<section id="hizmetBanner" class="py-15" style="background-image: url('<?php echo substr($satir_hizmet['foto'],3); ?>');">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
@@ -22,24 +19,21 @@ $satir_hizmet = $sorgu_hizmet -> fetch();
         </div>
     </div>
 </section>
+<!-- Hizmetler banner Section End-->
 
-<!-- Hizmetler banner section end -->
-
-<!-- içerik Section start -->
-
+<!-- İçerik Section Start -->
 <section id="hizmetContent" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <main>
-                  <?php echo $satir_hizmet['icerik'];?>
+                    <?php echo $satir_hizmet['icerik']; ?>
                 </main>
             </div>
-            <?php require_once('sidebar.php');?>
+            <?php require_once('sidebar.php'); ?>
         </div>
     </div>
 </section>
-
-<!-- içerik Section end -->
+<!-- İçerik Section End -->
 
 <?php require_once('footer.php'); ?>

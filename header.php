@@ -44,9 +44,7 @@ require_once('baglan.php');
                                         Hizmetlerim
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-
                                         <?php
-
                                         $sorgu_altmenu = $db->prepare('select * from sayfalar where sayfaturu = "Alt Sayfa" order by baslik asc ');
                                         $sorgu_altmenu->execute();
 
@@ -57,11 +55,7 @@ require_once('baglan.php');
                                         <?php
                                             }
                                         }
-
                                         ?>
-
-
-
                                     </div>
                                 </li>
                                 <li class="nav-item">

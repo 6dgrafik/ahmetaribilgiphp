@@ -43,7 +43,7 @@ $baslik = $satir_makale['baslik'];
                     foreach ($sorgu_yorumlar as $satir_yorumlar) {
                         if ($satir_yorumlar['baslik'] == $satir_makale['baslik']) {
                 ?>
-                            <strong><?php echo $satir_yorumlar['adiniz'] . ' ' . $satir_yorumlar['soyadiniz']; ?></strong> - <small><?php echo $satir_yorumlar['tarih']; ?></small><br>
+                            <strong><?php echo $satir_yorumlar['adiniz'] . ' ' . $satir_yorumlar['soyadiniz']; ?></strong> - <small><?php echo$satir_yorumlar['tarih']; ?></small><br>
                             <p><?php echo $satir_yorumlar['yorum']; ?></p>
                             <hr>
                 <?php
@@ -51,7 +51,6 @@ $baslik = $satir_makale['baslik'];
                     }
                 }
                ?>
-                
                 <h5 class="mt-5">Yorum Yapın</h5>
                 <form method="post" class="form-row">
                     <div class="col-md-6">
@@ -91,7 +90,7 @@ $baslik = $satir_makale['baslik'];
                     $tarih = date('d.m.Y');
 
                     $sorgu_yorumkaydet = $db->prepare('insert into yorumlar(adiniz,soyadiniz,email,yorum,baslik,durum,tarih) values(?,?,?,?,?,?,?)');
-                    $sorgu_yorumkaydet->execute(array($adiniz, $soyadiniz, $email, $yorum, $baslik, $durum,$tarih));
+                    $sorgu_yorumkaydet->execute(array($adiniz, $soyadiniz, $email, $yorum, $baslik, $durum, $tarih));
 
                     if ($sorgu_yorumkaydet->rowCount()) {
                         echo '<div class="alert alert-success">Yorumunuz Admin Onayına Gönderildi</div>';

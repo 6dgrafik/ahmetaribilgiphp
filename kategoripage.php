@@ -1,7 +1,7 @@
 <?php
 require_once('header.php');
 $kategori = $_GET['kategori'];
-$kat_list = $db->prepare('select * from yazilar where kategori=? order by id desc');
+$kat_list = $db->prepare('select * from yazilar where kategori = ? order by id desc');
 $kat_list->execute(array($kategori));
 ?>
 
@@ -31,7 +31,7 @@ $kat_list->execute(array($kategori));
                             <div class="col-md-8">
                                 <h2 style="font-size:22px;"><?php echo $satir_katlist['baslik']; ?></h2>
                                 <?php echo substr($satir_katlist['icerik'],0,250); ?>... <br>
-                                <a href="sample.php?id=<?php echo $satir_katlist['id'];?>" class="mor text-decoration-none">Devamını Oku ></a>
+                                <a href="sample.php?id=<?php echo $satir_katlist['id']; ?>" class="mor text-decoration-none">Devamını Oku ></a>
                             </div>
                         </div>
                 <?php

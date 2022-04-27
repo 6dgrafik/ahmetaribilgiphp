@@ -70,3 +70,19 @@
     background-repeat: no-repeat !important;
     background-attachment: fixed;
 }
+
+#princing .card:hover {
+    background-color: #6c55f9;
+    color: #fff;
+    transition: .9s;
+    box-shadow: 0px 0px 14px -1px rgba(0, 0, 0, 0.75);
+}
+
+#princing.card:hover>.btn-mor {
+    color: #6c55f9;
+    background-color: #fff;
+}
+
+#anaBanner button {
+    border-radius: 150px;
+}

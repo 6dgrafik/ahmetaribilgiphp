@@ -1,100 +1,113 @@
-<?php 
+<?php
 require_once('header.php');
 
-$sorgu_anabanner = $db -> prepare('select * from anabanner order by id desc limit 1');
-$sorgu_anabanner -> execute();
-$satir_anabanner = $sorgu_anabanner -> fetch();
-
+$sorgu_anabanner = $db->prepare('select * from anabanner order by id desc limit 1');
+$sorgu_anabanner->execute();
+$satir_anabanner = $sorgu_anabanner->fetch();
 ?>
 
-<!-- Banner section start -->
-
+<!-- Banner Section Start -->
 <section id="anaBanner" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 my-auto">
                 <h1 class="display-4"><?php echo $satir_anabanner['baslik']; ?></h1>
-                <?php  echo $satir_anabanner['aciklama']; ?>
-                
+                <?php echo $satir_anabanner['aciklama']; ?>
+
                 <!-- Button trigger modal -->
-<button type="button" class="btn btn-mor" data-toggle="modal" data-target="#exampleModal">
- <span style="font-size: 20px;"> Tanıtımı izle</span> <i class="bi bi-play-circle-fill" style="font-size: 20px;"></i>
-</button>
+                <button type="button" class="btn btn-mor" data-toggle="modal" data-target="#exampleModal">
+                    <span style="font-size:20px;">Tanıtımı İzle</span> <i class="bi bi-play-circle-fill" style="font-size:20px;"></i>
+                </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tanıtım Videosu</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <?php echo $satir_anabanner['link']; ?>
-        <!-- <video src="img/ronaldiho.mp4" controls></video> -->
-      </div>
-      
-    </div>
-  </div>
-</div>
-            </div>
-            <div class="col-md-6 text-center">
-               <img src="<?php echo substr($satir_anabanner['foto'],3) ; ?>" alt="" class="img-fluid">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Banner section end -->
-<!-- hizmet section start -->
-
-<section id="anaHizmetler">
-    <div class="container">
-        <div class="row">
-            <!--  foreach ile tekrarlanacak -->
-            <div class="col-md-4">
-                <div class="card">
-                    foto gelecek
-                    <h2>Başlık Gelecek</h2>
-                    <p>kısa açıklama (p etiketlerini kaldır)</p>
-                    <a href="#"><button class="btn btn-mor">Devamını Oku</button></a>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tanıtım Videosu</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <?php echo $satir_anabanner['link']; ?>
+                                <!-- <video src="img/eminem.mp4" controls width="100%"></video> -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-6 text-center">
+                <img src="<?php echo substr($satir_anabanner['foto'], 3); ?>" alt="" class="img-fluid">
+            </div>
         </div>
     </div>
 </section>
+<!-- Banner Section End -->
 
-<!-- hizmet section end -->
 
-<!-- hakkımda section start -->
+<!-- Hizmet Section Start -->
+<section id="anaHizmetler" class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Hizmetler</h2>
+            </div>
+        </div>
+        <div class="row">
+            <?php
+            $sorgu_hizmetler = $db->prepare('select * from sayfalar where sayfaturu = "Alt Sayfa" order by baslik desc');
+            $sorgu_hizmetler->execute();
 
-<section id="anaHakkimda">
+            if ($sorgu_hizmetler->rowCount()) {
+                foreach ($sorgu_hizmetler as $satir_hizmetler) {
+            ?>
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <img src="<?php echo substr($satir_hizmetler['foto'], 3); ?>" class="img-fluid">
+                            <h2 style="font-size:24px;" class="mt-3"><?php echo $satir_hizmetler['baslik']; ?></h2>
+                            <?php echo substr($satir_hizmetler['icerik'], 0, 150); ?>
+                            <br><a href="samplepage.php?id=<?php echo $satir_hizmetler['id']; ?>"><button class="btn btn-mor mt-4">Devamını Oku</button></a>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
+    </div>
+</section>
+<!-- Hizmet Section End -->
+
+<!-- Hakkımda Section Start -->
+<?php
+
+$sorgu_hakkimda = $db->prepare('select * from sayfalar where baslik="Hakkımda"');
+$sorgu_hakkimda->execute();
+$satir_hakkimda = $sorgu_hakkimda->fetch();
+?>
+<section id="anaHakkimda" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3>Hakkımda</h3>
-                <h2>Alt Başlık 2</h2>
-                <p>kısa açıklama (p etiketlerini kaldır)</p>
-                <a href="hakkimda.php"><button class="btn btn-mor">Devamını Oku</button></a></a>
+                <h3><?php echo $satir_hakkimda['baslik']; ?></h3>
+                <?php echo substr($satir_hakkimda['icerik'], 0, 800); ?>
+                <br><a href="hakkimda.php"><button class="btn btn-mor mt-4">Devamını Oku</button></a>
             </div>
-            <div class="col-md-6">
-                Sabit Bir foto gelecek
+            <div class="col-md-6 text-center my-auto">
+                <img src="img/hakkimda.png" alt="Hakkımda" class="img-fluid">
             </div>
         </div>
     </div>
 </section>
+<!-- Hakkımda Section End -->
 
-<!-- hakkımda section end -->
-
-<!-- özelllikler section start  -->
-
-<section id="anaOzellikler">
+<!-- özellikler Section start -->
+<div id="anaOzellikler">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>Özelliklerimiz</h3>
+                <h3>özelliklerimiz</h3>
                 <h2>Alt Başlık</h2>
             </div>
         </div>
@@ -102,22 +115,19 @@ $satir_anabanner = $sorgu_anabanner -> fetch();
             <div class="col-md-4">
                 ikon gelecek <br>
                 başlık gelecek <br>
-                kısa açıklama gelecek <br>
+                kısa açıklama
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- özellikler Section end -->
 
-<!-- özelllikler section end  -->
-
-<!-- seo başvuru start -->
-
-<section id="anaBasvuru">
+<!-- Seo başvuru Section Start -->
+<section id="anaSeobasvuru">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <h2>Ücretsiz Seo Analizi</h2>
-
             </div>
         </div>
         <form method="post" class="form-row">
@@ -134,15 +144,12 @@ $satir_anabanner = $sorgu_anabanner -> fetch();
             <div class="col-md-4">
                 <button type="submit" class="btn btn-mor">Gönder</button>
             </div>
-
         </form>
     </div>
 </section>
+<!-- Seo başvuru Section End -->
 
-<!-- seo başvuru end -->
-
-<!-- Hizmet İçerikleri section start -->
-
+<!-- Hizmet İçerikleri Section Start -->
 <section id="princing">
     <div class="container">
         <div class="row">
@@ -161,69 +168,81 @@ $satir_anabanner = $sorgu_anabanner -> fetch();
                     </div>
                     <div class="card-body text-center">
                         <ul>
-                            <li>Hizmet içeriği 1</li>
-                            <li>Hizmet içeriği 2</li>
-                            <li>Hizmet içeriği 3</li>
-                            <li>Hizmet içeriği 4</li>
-                            <li>Hizmet içeriği 5</li>
+                            <li>Hizmet İçeriği 1</li>
+                            <li>Hizmet İçeriği 2</li>
+                            <li>Hizmet İçeriği 3</li>
+                            <li>Hizmet İçeriği 4</li>
+                            <li>Hizmet İçeriği 5</li>
                         </ul>
                     </div>
                     <div class="card-footer bg-transparent">
-                        <a href="iletisim.php" class="btn btn-mor w-100">Teklif Alın</a>
+                        <a href="iletisim.php" class="btn btn-warning w-100">Teklif Alın</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- Hizmet İçerikleri Section End -->
 
-<!-- Hizmet İçerikleri section wnd -->
-
-<!-- hizmet tanıtım section start -->
-
+<!-- Hizmet Tanıtım Section Start -->
 <section id="hizmetTanitim" class="bg-mor">
-    <div class="container">,
+    <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Hizmet Tanıtım Başlığı</h2>
+            <div class="col-md-6 text-white">
+                <h2>Hzimet Tanıtım Başlık Gelecek</h2>
                 <p>Kısa Açıklama Gelecek</p>
             </div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                Görsel Gelecek
+            </div>
         </div>
     </div>
 </section>
+<!-- Hizmet Tanıtım Section End -->
 
-<!-- hizmet tanıtım section end -->
-
-<!-- Güncel blog section start -->
-
-<div id="blogOzet">
+<!-- Güncel Blog Section Start -->
+<section id="blogOzet" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
                 <h4>Blog Yazıları</h4>
-                <h3>En Güncel Blog Yazıları</h3>
+                <h3>En Güncel Blog Yazılarım</h3>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <a href="" class="text-decoration-none">
-                    <div class="card shadow">
-                        <!-- foto gelecek -->
-                        <img src="" alt="" class="card-img-top">
-                        <h3>Blog Başlık Gelecek</h3>
-                        <small>Yayınlanma Tarihi: aaa</small>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="row">
+        <div class="row my-4">
+            <?php
 
+            $sorgu_blog = $db->prepare('select * from yazilar order by id desc limit 3');
+            $sorgu_blog->execute();
+
+            if ($sorgu_blog->rowCount()) {
+                foreach ($sorgu_blog as $satir_blog) {
+            ?>
+                    <div class="col-md-4">
+                        <a href="sample.php?id=<?php echo $satir_blog['id']; ?>" class="text-decoration-none text-dark">
+                            <div class="card shadow">
+                                <!-- Foto Gelecek -->
+                                <img src="<?php echo substr($satir_blog['foto'], 3); ?>" alt="<?php echo $satir_blog['fotoalt']; ?>" class="card-img-top mb-3">
+                                <div class="card-body">
+                                    <h3 style="font-size: 20px;"><?php echo $satir_blog['baslik']; ?></h3>
+                                    <small class="mb-3">Yayınlanma Tarihi: <?php echo $satir_blog['tarih']; ?></small>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <a href="blog.php" class="btn btn-mor">Tümünü Okuyun</a>
+            </div>
         </div>
     </div>
-</div>
-
-<!-- Güncel blog section end -->
-
+</section>
+<!-- Güncel Blog Section End -->
 
 <?php require_once('footer.php'); ?>

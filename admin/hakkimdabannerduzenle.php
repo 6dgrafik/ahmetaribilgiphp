@@ -2,11 +2,9 @@
 require_once('header.php');
 
 $id = $_GET['id'];
-$hakkimdabannerduzenle = $db->prepare('select * from hakkimdabanner where id=
- ?');
+$hakkimdabannerduzenle = $db->prepare('select * from hakkimdabanner where id=?');
 $hakkimdabannerduzenle->execute(array($id));
 $satir_hakbannerduzenle = $hakkimdabannerduzenle->fetch();
-
 ?>
 
 
@@ -21,7 +19,8 @@ $satir_hakbannerduzenle = $hakkimdabannerduzenle->fetch();
         <form enctype="multipart/form-data" method="post" class="form-row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <img src="<?php echo ($satir_hakbannerduzenle['foto']); ?>" class="w-50 mb-1"><br>
+                    <img src="<?php echo $satir_hakbannerduzenle['foto']; ?>" class="w-50 mb-1">
+                    <br>
                     <input type="file" name="foto" id="gorsel">
                 </div>
                 <div class="form-group">
@@ -32,28 +31,20 @@ $satir_hakbannerduzenle = $hakkimdabannerduzenle->fetch();
                     <label><small>
                             Background Konum -
                             <?php
-
                             $konum = $satir_hakbannerduzenle['konum'];
-
                             switch ($konum) {
                                 case 'background-position:center center;':
                                     echo 'Merkez';
                                     break;
-
                                 case 'background-position:top center;':
-
                                     echo 'Üst';
                                     break;
-
                                 case 'background-position:bottom center;':
-
                                     echo 'Alt';
                                     break;
                             }
-
                             ?>
-                        </small>
-                    </label>
+                        </small></label>
                     <select name="konum" class="form-control">
                         <option value="">Seçiniz</option>
                         <option value="background-position:center center;">Merkez</option>
@@ -67,21 +58,16 @@ $satir_hakbannerduzenle = $hakkimdabannerduzenle->fetch();
                     <label><small>
                             Background Tekrar -
                             <?php
-
                             $tekrar = $satir_hakbannerduzenle['tekrar'];
                             switch ($tekrar) {
                                 case 'background-repeat:no-repeat;':
                                     echo 'Tekrarlama';
                                     break;
-
                                 case 'background-repeat:repeat;':
-
                                     echo 'Tekrarla';
                                     break;
                             }
-
                             ?>
-
                         </small></label>
                     <select name="tekrar" class="form-control">
                         <option value="">Seçiniz</option>
@@ -95,16 +81,16 @@ $satir_hakbannerduzenle = $hakkimdabannerduzenle->fetch();
                             <?php
 
                             $size = $satir_hakbannerduzenle['size'];
+
                             switch ($size) {
                                 case 'background-size:cover;':
-                                    echo 'Kapla';
+                                    echo 'Kaplama';
                                     break;
 
-                                case 'background-size:contain;':
+                                case 'background-size:contain':
                                     echo 'Sıkıştır';
                                     break;
                             }
-
                             ?>
                         </small></label>
                     <select name="size" class="form-control">
@@ -118,35 +104,29 @@ $satir_hakbannerduzenle = $hakkimdabannerduzenle->fetch();
                 </div>
             </div>
         </form>
+        <?php
 
-<?php 
+        if ($_POST) {
+            $dizin = "../img/";
+            $yuklenecekfoto = $dizin . $_FILES['foto']['name'];
+            $baslik = $_POST['baslik'];
+            $konum = $_POST['konum'];
+            $tekrar = $_POST['tekrar'];
+            $size = $_POST['size'];
 
-if($_POST){
-    $dizin = "../img";
-    $yuklenecekfoto = $dizin.$_FILES['foto']['name'];
-$baslik = $_POST['baslik'];
-$konum = $_POST['konum'];
-$tekrar = $_POST['tekrar'];
-$size = $_POST['size'];
-
-if(move_uploaded_file($_FILES['foto']['tmp_name'],$yuklenecekfoto)){
-    $sorgu_hakbanduz = $db -> prepare('update hakkimdabanner set foto=?,baslik=?,konum=?,tekrar=?,size=? where id=?');
-    $sorgu_hakbanduz -> execute(array($yuklenecekfoto,$baslik,$konum,$tekrar,$size,$id));
-
-    if($sorgu_hakbanduz ->rowCount()){
-        echo '<div class="alert alert-success">Kayıt Güncellendi</div><meta http-equiv="refresh" content="1; url=hakkimdabanner.php">';
-    }else{
-        echo '<div class="alert alert-danger">Hata Oluştu</div>';
-    }
-}
-}
-
-?>
-
+            if (move_uploaded_file($_FILES['foto']['tmp_name'], $yuklenecekfoto)) {
+                $sorgu_hakbanduz = $db->prepare('update hakkimdabanner set foto =?, baslik=?, konum=?, tekrar=?, size=? where id=?');
+                $sorgu_hakbanduz->execute(array($yuklenecekfoto, $baslik, $konum, $tekrar, $size, $id));
+                if ($sorgu_hakbanduz->rowCount()) {
+                    echo '<div class="alert alert-success">Kayıt Güncellendi</div><meta http-equiv="refresh" content="2; url=hakkimdabanner.php">';
+                } else {
+                    echo '<div class="alert alert-danger">Hata Oluştu</div>';
+                }
+            }
+        }
+        ?>
     </div>
 </section>
 <!-- Hakkımda Banner Section End -->
-
-
-
 <?php require_once('footer.php'); ?>
+

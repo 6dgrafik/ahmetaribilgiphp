@@ -96,7 +96,6 @@
                     </thead>
                     <tbody>
                         <?php
-
                         $sorgu_hakkimdabanner = $db->prepare('select * from hakkimdabanner order by id desc limit 1');
                         $sorgu_hakkimdabanner->execute();
 

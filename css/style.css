@@ -86,3 +86,12 @@
 #anaBanner button {
     border-radius: 150px;
 }
+
+#princing ul {
+    list-style-type: none !important;
+    padding: 0px;
+}
+
+#anaSeobasvuru {
+    background: radial-gradient(circle, rgba(108, 85, 249, 1) 0%, rgba(231, 117, 230, 1) 50%, rgba(109, 85, 249, 1) 100%);
+}

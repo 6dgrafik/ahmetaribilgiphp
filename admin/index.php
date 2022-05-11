@@ -40,7 +40,7 @@
                         $kadi = $_POST['kadi'];
                         $sifre = $_POST['sifre'];
 
-                        if ($kadi == "admin" && $sifre == "123") {
+                        if ($kadi == "Admin" && $sifre == "123") {
                             $_SESSION['kadi'] = $kadi;
                             echo '<div class="alert alert-success">Kullanıcı Adı ve Şifre Doğru</div>';
                             echo '<meta http-equiv="refresh" content="2; url=dashboard.php">';

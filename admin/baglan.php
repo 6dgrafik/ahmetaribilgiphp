@@ -1,3 +1,3 @@
 <?php
-$db = new PDO('mysql:host=localhost;dbname=aribilgi;charset=UTF8','root','');
+$db = new PDO('mysql:host=localhost;dbname=aribilisim;charset=UTF8','root','');
 ?>

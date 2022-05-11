@@ -262,15 +262,22 @@ $satir_hakkimda = $sorgu_hakkimda->fetch();
 <!-- Hizmet İçerikleri Section End -->
 
 <!-- Hizmet Tanıtım Section Start -->
-<section id="hizmetTanitim" class="bg-mor">
+<?php 
+
+$sorgu_ctamain = $db -> prepare('select * from maincta order by id desc limit 1');
+$sorgu_ctamain -> execute();
+$satir_ctamain = $sorgu_ctamain -> fetch();
+
+?>
+<section id="hizmetTanitim" style="background-color:<?php echo$satir_ctamain['background']; ?> ;" class="py-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 text-white">
-                <h2>Hzimet Tanıtım Başlık Gelecek</h2>
-                <p>Kısa Açıklama Gelecek</p>
+                <h2 style="font-size:<?php echo $satir_ctamain['font'];?>px ;"><?php echo $satir_ctamain['baslik'];?></h2>
+                <p style="font-size:<?php echo $satir_ctamain['font2'];?>px ;"><?php echo $satir_ctamain['kisayazi']; ?></p>
             </div>
-            <div class="col-md-6">
-                Görsel Gelecek
+            <div class="col-md-6 my-auto text-center">
+                <a href="tel:+905555555"><button class="btn btn-warning">Hemen Arayın</button></a>
             </div>
         </div>
     </div>

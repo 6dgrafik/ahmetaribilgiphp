@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1:3306
--- Üretim Zamanı: 09 May 2022, 18:48:47
+-- Üretim Zamanı: 16 May 2022, 18:28:05
 -- Sunucu sürümü: 5.7.36
 -- PHP Sürümü: 7.4.26
 
@@ -184,6 +184,30 @@ INSERT INTO `kategoriler` (`id`, `kategori`, `katturu`, `ustkat`, `meta`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `maincta`
+--
+
+DROP TABLE IF EXISTS `maincta`;
+CREATE TABLE IF NOT EXISTS `maincta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `baslik` varchar(100) NOT NULL,
+  `kisayazi` varchar(250) NOT NULL,
+  `background` varchar(7) NOT NULL,
+  `font` varchar(3) NOT NULL,
+  `font2` varchar(3) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `maincta`
+--
+
+INSERT INTO `maincta` (`id`, `baslik`, `kisayazi`, `background`, `font`, `font2`) VALUES
+(2, 'Hızlı ve Kaliteli Hizmet için Hemen Arayın', 'Ari Bilişim dijital hizmetler olarak, ihtiyaçlarınıza en uygun dijital çözümler sağlıyoruz.', '#6c55f9', '24', '14');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `mesajlar`
 --
 
@@ -203,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `mesajlar` (
 --
 
 INSERT INTO `mesajlar` (`id`, `ad`, `email`, `konu`, `mesaj`, `durum`) VALUES
-(1, 'Hayko Cepkin', 'hayko@hayko.com', 'Şikayet', 'Sevgili Kaan, sana o kadar para ödedim hala web sitemi yapmadın.', 'Okunmadı'),
+(1, 'Hayko Cepkin', 'hayko@hayko.com', 'Şikayet', 'Sevgili Kaan, sana o kadar para ödedim hala web sitemi yapmadın.', 'Okundu'),
 (2, 'Müzeyyen Senar', 'muzo@muzo.com', 'Teknik Destek', 'Kaancım, siteye mesajlar mail olarak bana gelmiyor. Bi zahmet kontrol eder misin?', 'Okundu'),
 (4, 'asfdasdfasd', 'kaan@kaan.com', 'Öneri', 'asdasdasdasdasda', 'Okunmadı');
 
@@ -229,6 +253,55 @@ CREATE TABLE IF NOT EXISTS `ornek` (
 INSERT INTO `ornek` (`id`, `ad`, `yas`, `il`) VALUES
 (6, 'Kaan', 40, 'İstanbul'),
 (8, 'Hayko', 40, 'İstanbul');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `ozellikler`
+--
+
+DROP TABLE IF EXISTS `ozellikler`;
+CREATE TABLE IF NOT EXISTS `ozellikler` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ikon` varchar(50) NOT NULL,
+  `ozbaslik` varchar(100) NOT NULL,
+  `ozaciklama` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `ozellikler`
+--
+
+INSERT INTO `ozellikler` (`id`, `ikon`, `ozbaslik`, `ozaciklama`) VALUES
+(2, '<i class=\"bi bi-apple\"></i>', 'Mobil App Uyumu', 'Mobil cihazlarda sorunsuz çalışan teknoloji'),
+(3, '<i class=\"bi bi-badge-wc-fill\"></i>', 'Hızlı Sonuç', 'sdfsdfsfdfgsdfgsdfghsgsdgsdfgsdfgasgsdfgsdfgdfg'),
+(4, '<i class=\"bi bi-balloon-heart-fill\"></i>', 'Patlamayan Sistem', 'sfgsdfgsdfgsdfgsdfgsdfgdfgsdfgsdfgsdgsdfgsdfgsdfgsdfg'),
+(5, '<i class=\"bi bi-bootstrap-fill\"></i>', 'Responsive tasarım', 'asdfsdgfsdhjghkgjghkgfjkgfkhkh'),
+(6, '<i class=\"bi bi-behance\"></i>', 'DM\'den Yürü', 'hjghjjhfgjfdljacfjacsdvkasdjbvkı'),
+(7, '<i class=\"bi bi-bell-fill\"></i>', 'Jengal Bells', 'wefrwefjbıqwebfıhqwebchbuqwehcuwqebc');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `ozellikler2`
+--
+
+DROP TABLE IF EXISTS `ozellikler2`;
+CREATE TABLE IF NOT EXISTS `ozellikler2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `baslik` varchar(100) NOT NULL,
+  `altbaslik` varchar(150) NOT NULL,
+  `renk` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `ozellikler2`
+--
+
+INSERT INTO `ozellikler2` (`id`, `baslik`, `altbaslik`, `renk`) VALUES
+(1, 'Firmamızın Özellikleri', 'Fırmamınızın Siz Değerli Müşterilerine Sağladığı Avantajlar', '#f8f9fa');
 
 -- --------------------------------------------------------
 
@@ -307,6 +380,33 @@ CREATE TABLE IF NOT EXISTS `paket3` (
 
 INSERT INTO `paket3` (`id`, `baslik3`, `fiyat3`, `ozellik3a`, `ozellik3b`, `ozellik3c`, `ozellik3d`, `ozellik3e`) VALUES
 (1, 'Pro Paket', '7500', 'Pro 1', 'Pro 2', 'Pro 3', 'Pro 4', 'Pro 5');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `portfolyo`
+--
+
+DROP TABLE IF EXISTS `portfolyo`;
+CREATE TABLE IF NOT EXISTS `portfolyo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `foto` varchar(150) NOT NULL,
+  `fotoalt` varchar(150) NOT NULL,
+  `projeadi` varchar(150) NOT NULL,
+  `projeturu` varchar(150) NOT NULL,
+  `teknoloji` varchar(150) NOT NULL,
+  `tema` varchar(150) NOT NULL,
+  `konu` varchar(250) NOT NULL,
+  `kategori` varchar(150) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `portfolyo`
+--
+
+INSERT INTO `portfolyo` (`id`, `foto`, `fotoalt`, `projeadi`, `projeturu`, `teknoloji`, `tema`, `konu`, `kategori`) VALUES
+(1, '../img/foto (1).jpg', 'Acıbadem Beauty Center', 'Acıbadem Beauty Center', 'Kurumsal / Estetik', 'Wordpress, Elementor', 'Özel Tema', 'Yurtdışı sağlık turizmi için Acıbadem sağlık grubuna ait web sitesi.', 'Web Tasarım');
 
 -- --------------------------------------------------------
 
@@ -433,7 +533,7 @@ CREATE TABLE IF NOT EXISTS `yorumlar` (
   `durum` varchar(15) NOT NULL,
   `tarih` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Tablo döküm verisi `yorumlar`
@@ -444,7 +544,8 @@ INSERT INTO `yorumlar` (`id`, `adiniz`, `soyadiniz`, `email`, `yorum`, `baslik`,
 (2, 'Bülent', 'Ersoy', 'bulo@gmail.com', 'Fevkaladenin Fevkinde', 'Seonun Web Siteleri için Önemi', 'onaylandı', '01.03.2022'),
 (4, 'Mahmut', 'Tuncer', 'mamo@gmail.com', 'Hadi Halay Çekelim :)', 'Blog Yazısı 6', 'onaylandı', '12.04.2022'),
 (5, 'Ebru', 'Polat', 'ebus@gmail.com', 'Aman Ne Kadar Da Güzel', 'Blog Yazısı 6', 'onaylandı', '25.12.2022'),
-(6, 'Haluk', 'Levent', 'halo@gmail.com', 'Hayko Sen Portakalda Vitaminken Ben Sahnelerdeydim', 'Sosyal Medyada Takipçi Kazanma', 'onaylandı', '18.04.2022');
+(6, 'Haluk', 'Levent', 'halo@gmail.com', 'Hayko Sen Portakalda Vitaminken Ben Sahnelerdeydim', 'Sosyal Medyada Takipçi Kazanma', 'onaylandı', '18.04.2022'),
+(7, 'Yıldız', 'Tilbe', 'yildo@gmail.com', 'Vay be Delikanlım benim, Güzel Elbiselerle Önünden Geçip Sana Bakmayacağım', 'Sosyal Medyada Takipçi Kazanma', 'onaylanmadı', '16.05.2022');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

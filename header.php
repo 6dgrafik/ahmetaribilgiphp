@@ -1,6 +1,12 @@
 <?php
 session_start();
 require_once('baglan.php');
+
+
+$sorgu_bottom = $db->prepare('select * from ayarlar order by id desc limit 1');
+$sorgu_bottom->execute();
+$satir_bottom = $sorgu_bottom->fetch();
+
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +44,9 @@ require_once('baglan.php');
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="hakkimda.php">Hakkımda</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="portfolyo.php">Portfolyo</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">

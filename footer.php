@@ -1,9 +1,20 @@
+<?php
+// $sorgu_bottom = $db->prepare('select * from ayarlar order by id desc limit 1');
+// $sorgu_bottom->execute();
+// $satir_bottom = $sorgu_bottom->fetch();
+?>
+
 <!-- footer Section start -->
 <section id="footer" class="pt-5 pb-1 text-white">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                Logo Gelecek <br> Kısa Açıklama Gelecek <br> Sos.Med İkonları Gelecek
+                <img src="<?php echo substr($satir_bottom['logo'],3); ?>" alt="Arı Bilişim Logo"> <br>
+                <small><?php echo $satir_bottom['tanitim']; ?></small> <br>
+                <a href="<?php echo $satir_bottom['facebook']; ?>" target="_blank"><i class="bi bi-facebook" style="font-size:24px;" ></i></a>
+                <a href="<?php echo $satir_bottom['instagram']; ?>" target="_blank"><i class="bi bi-instagram" style="font-size:24px;" ></i></a>
+                <a href="<?php echo $satir_bottom['twitter']; ?>" target="_blank"><i class="bi bi-twitter" style="font-size:24px;" ></i></a>
+                <a href="<?php echo $satir_bottom['whatsapp']; ?>" target="_blank"><i class="bi bi-whatsapp" style="font-size:24px;" ></i></a>
             </div>
             <div class="col-md-3">
                 <h5>Hızlı Menü</h5>
@@ -11,7 +22,9 @@
             </div>
             <div class="col-md-3">
                 <h5>İletişim</h5>
-                Adres gelecek <br> Telefon Gelecek <br> Email Gelecek
+                <?php echo $satir_bottom['adres']; ?> <br> 
+                <a href="tel:+9<?php echo $satir_bottom['telefon']; ?>"><?php echo $satir_bottom['telefon']; ?></a> <br> 
+                <a href="mailto:<?php echo $satir_bottom['email']; ?>"><?php echo $satir_bottom['email']; ?></a>
             </div>
             <div class="col-md-3">
                 <h5>E-Bülten Üyelik</h5>
@@ -29,10 +42,7 @@
         <div class="row">
             <div class="col-md-6">
                 <?php
-                $sorgu_bottom = $db->prepare('select * from ayarlar order by id desc limit 1');
-                $sorgu_bottom->execute();
-                $satir_bottom = $sorgu_bottom->fetch();
-                echo $satir_bottom['copy'].' '.date('Y');
+                echo $satir_bottom['copy'] . ' ' . date('Y');
                 ?>
             </div>
             <div class="col-md-6 text-right">
@@ -51,4 +61,3 @@
 </body>
 
 </html>
-
